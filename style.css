@@ -1,0 +1,249 @@
+/* RESET */
+* {
+    box-sizing: border-box;
+  }
+  
+  html, body {
+    margin: 0;
+    height: 100%;
+    font-family: monospace; /* temp */
+  }
+  
+  /* MAIN LAYOUT */
+  .layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    height: 100vh;
+  }
+  
+  .sidebar {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    max-height: 100vh;
+    position: sticky;               /* stay in place while scrolling */
+    top: 0;
+    justify-content: space-between;
+    z-index: 5000;
+    height: 100vh;  
+  }
+  
+  /* IDENTITY */
+  .identity h1 {
+    font-size: 18px;
+    margin: 0 0 8px 0;
+  }
+  
+  .bio {
+    font-size: 12px;
+    line-height: 1.4;
+    text-align: center;
+  }
+  
+  /* NAV */
+  .nav {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin: 0;
+  }
+  
+  .nav a {
+    text-decoration: none;
+    color: black;
+    font-size: 12px;
+  }
+  
+  .nav a:hover {
+    text-decoration: underline;
+  }
+  .nav-wrapper {
+    flex: 1;
+    display: flex;
+    align-items: center;
+  }
+  
+  /* CONTACT */
+  .contact a {
+    display: block;
+    font-size: 12px;
+    color: black;
+    text-decoration: none;
+  }
+  
+  /* MAIN CONTENT */
+  .content {
+    overflow-y: auto;
+    padding: 24px;
+  }
+  
+  /* GALLERY */
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  
+  /* GALLERY ITEMS */
+  .item {
+    aspect-ratio: 4 / 3;
+    border: 1px solid #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    text-decoration: none;
+    color: black;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+  }
+  .overlay {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+    pointer-events: none; /* keeps link clickable */
+  }
+  .item img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* or 'contain', depending on your preference */
+    display: block; /* remove inline spacing issues */
+}
+.bars {
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      to bottom,
+      rgba(255,255,255,0.9) 0px,
+      rgba(255,255,255,0.9) 6px,
+      transparent 6px,
+      transparent 14px
+    );
+  }
+  .title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    background: white;
+    padding: 4px 8px;
+    z-index: 2;
+  }
+  .item:hover .overlay {
+    opacity: 1;
+  }
+/* =========================
+   CONTACT PAGE
+========================= */
+
+.contact-page {
+    display: flex;
+    align-items: flex-start;
+  }
+  
+  .contact-wrapper {
+    max-width: 600px;
+    padding-top: 24px;
+  }
+  
+  .contact-wrapper h2 {
+    font-size: 14px;
+    margin-bottom: 16px;
+  }
+  
+  .contact-intro {
+    font-size: 12px;
+    margin-bottom: 32px;
+    line-height: 1.5;
+  }
+  
+  .contact-details {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .contact-details li {
+    font-size: 12px;
+    margin-bottom: 24px;
+    line-height: 1.5;
+  }
+  
+  .contact-details a {
+    color: #000;
+    text-decoration: none;
+  }
+  
+  .contact-details a:hover {
+    text-decoration: underline;
+  }
+  
+  .contact-note {
+    font-size: 11px;
+    margin-top: 48px;
+    color: #000;
+  }
+  /* =========================
+   ABOUT PAGE
+========================= */
+
+.about {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 48px;
+    max-width: 900px;
+  }
+  
+  /* Headshot */
+  .about-image img {
+    width: 100%;
+    display: block;
+  }
+  
+  .about-image figcaption {
+    font-size: 11px;
+    margin-top: 8px;
+    opacity: 0.7;
+  }
+  
+  /* Text */
+  .about-text h2 {
+    font-size: 12px;
+    font-weight: normal;
+    margin-bottom: 16px;
+  }
+  
+  .about-text p {
+    font-size: 12px;
+    line-height: 1.6;
+    margin-bottom: 16px;
+    max-width: 520px;
+  }
+  
+  /* Details block */
+  .about-details {
+    margin-top: 32px;
+  }
+  
+  .about-details p {
+    font-size: 11px;
+    line-height: 1.5;
+    margin-bottom: 12px;
+  }
+/* SIDEBAR IMAGE */
+.sidebar-image {
+    width: 100%;
+    margin-bottom: 16px;
+  }
+  
+  .sidebar-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+  

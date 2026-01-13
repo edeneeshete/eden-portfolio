@@ -1,0 +1,355 @@
+/* =========================
+   RESET
+========================= */
+* {
+    box-sizing: border-box;
+  }
+  
+  html, body {
+    margin: 0;
+    height: 100%;
+    font-family: monospace; /* replace with Etica later */
+    color: #000;
+  }
+  
+  /* =========================
+     MAIN LAYOUT
+  ========================= */
+  .layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    height: 100vh;
+  }
+  
+  .sidebar {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    max-height: 100vh;
+    position: sticky;               /* stay in place while scrolling */
+    top: 0;
+    justify-content: space-between;
+    z-index: 5000;
+  }
+  
+  /* IDENTITY AT TOP */
+  .identity {
+    /* optional spacing already covered by padding */
+  }
+  
+  .identity h1 {
+    font-size: 18px;
+    margin: 0 0 8px 0;
+  }
+  
+  .bio {
+    font-size: 12px;
+    line-height: 1.4;
+  }
+  
+  /* =========================
+     NAV CENTERED
+  ========================= */
+  .nav-wrapper {
+    flex: 1;                       /* take remaining vertical space */
+    display: flex;
+    align-items: center;            /* vertical center nav inside wrapper */
+    justify-content: flex-start;    /* keep links left-aligned */
+  }
+  
+  .nav {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  
+  .nav a {
+    font-size: 12px;
+    color: #000;
+    text-decoration: none;
+  }
+  
+  .nav a:hover {
+    text-decoration: underline;
+  }
+  
+  /* =========================
+     CONTACT AT BOTTOM
+  ========================= */
+  .contact {
+    /* no flex needed, stays at bottom */
+  }
+  
+  .contact a {
+    display: block;
+    font-size: 12px;
+    color: #000;
+    text-decoration: none;
+  }
+  
+  /* =========================
+     MAIN CONTENT
+  ========================= */
+  .content {
+    padding: 24px;
+    overflow-y: auto;
+  }
+  
+  /* =========================
+     GALLERY (HOME / WORKS)
+  ========================= */
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  
+  /* GALLERY ITEM */
+  .item {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    border: 1px solid #000;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  
+  /* IMAGE NORMALISATION */
+  .item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  
+  /* CAPTION OVERLAY */
+  .item .caption {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    background: rgba(255,255,255,0.85);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    pointer-events: none;
+  }
+  
+  /* HOVER STATE */
+  .item:hover .caption {
+    opacity: 1;
+  }
+  
+  /* =========================
+     PROJECT PAGE
+  ========================= */
+  .project-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  
+  /* PROJECT IMAGES */
+  .project-images {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+  
+  .project-images img {
+    width: 50vw;
+    max-width: 500px;
+
+  }
+  
+  /* PROJECT TEXT */
+  .project-info {
+    font-size: 12px;
+    line-height: 1.6;
+  }
+  
+  .project-info h2 {
+    font-size: 14px;
+    margin: 0 0 16px 0;
+  }
+  
+  .project-info .meta {
+    font-size: 11px;
+    margin-bottom: 24px;
+  }
+  
+  /* =========================
+     RESPONSIVE
+  ========================= */
+  @media (max-width: 900px) {
+    .gallery {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  
+    .project-layout {
+      grid-template-columns: 1fr;
+    }
+  
+    .project-images img {
+      width: 100%;
+      max-width: none;
+    }
+  }
+
+.project-image-wrapper {
+  position: relative;
+  display: inline-block;
+}
+  /* =========================
+   LIGHTBOX
+========================= */
+/* =========================
+   LIGHTBOX
+========================= */
+.lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(255,255,255,0.95);
+    display: none;
+    flex-direction: column;  /* ensures image and caption stack vertically */
+    align-items: center;
+    justify-content: center;
+    padding: 24px;          /* optional padding for smaller screens */
+    overflow: auto;          /* allows scrolling if image + zoom too big */
+    z-index: 9999;  /* above lightbox image */
+}
+
+.lightbox.open {
+    display: flex;
+}
+
+.lightbox-image {
+    max-width: 85vw;
+    max-height: 85vh;
+}
+
+/* BUTTONS */
+.lightbox button {
+    position: absolute;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #000;
+}
+
+.lightbox-close {
+    top: 24px;
+    right: 24px;
+}
+
+.lightbox-prev {
+    left: 24px;
+}
+
+.lightbox-next {
+    right: 24px;
+}
+
+/* ---------- ZOOM BOX ---------- */
+.lightbox-zoom-wrapper {
+    position: relative;
+    display: inline-block;  /* ensures zoom box is relative to image only */
+}
+
+.zoom-preview {
+    position: fixed;
+  
+    /* fixed placement in viewport */
+    top: 52px;
+    left: 52px;
+  
+    width: 180px;
+    height: 280px;        /* rectangular */
+  
+    background-repeat: no-repeat;
+    background-size: cover;
+  
+    background-color: #fff;
+  
+    display: none;
+  
+    z-index: 10001;       /* above sidebar + lightbox */
+  }
+  
+
+/* ---------- CAPTION BELOW IMAGE ---------- */
+.lightbox-caption {
+    margin-top: 12px;
+    font-size: 14px;
+    text-align: center;
+    color: #000;
+}
+body:has(.lightbox.open) {
+    overflow: hidden;
+  }
+  .lightbox-zoom-wrapper:hover {
+    cursor: crosshair;
+  }
+  .project-images .zoom-img {
+    cursor: zoom-in;
+  }
+  .thumbnail-grid {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 16px;
+    width: 100%;
+    margin-left: 13px;
+}
+
+.thumbnail-wrapper {
+    height: 180px;     /* uniform square size */
+    overflow: hidden;
+    cursor: zoom-in;
+}
+
+.thumbnail-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.2s ease;
+}
+
+.thumbnail-wrapper:hover img {
+    transform: scale(1.05);
+}
+/* Project navigation (Back / Next) */
+.project-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+  
+  .back-link,
+  .next-link {
+    font-size: 12px;
+    color: #000;
+    text-decoration: none;
+  }
+  
+  .back-link:hover,
+  .next-link:hover {
+    text-decoration: underline;
+  }
+  /* SIDEBAR IMAGE */
+.sidebar-image {
+    width: 100%;
+    margin-bottom: 16px;
+  }
+  
+  .sidebar-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
