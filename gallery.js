@@ -1,13 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-  // ------------------------------
-  // SELECT ALL ITEMS
-  // ------------------------------
+  // ================================
+  // GALLERY IMAGE HOVER (UNCHANGED)
+  // ================================
   const allItems = Array.from(document.querySelectorAll('.item.animated'));
 
-  // ------------------------------
-  // HOVER ANIMATION
-  // ------------------------------
   allItems.forEach(item => {
     const img = item.querySelector('img');
     const images = item.dataset.images.split(',');
@@ -15,10 +12,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let interval = null;
     const originalSrc = img.src;
 
-    // Preload images
     images.forEach(src => new Image().src = `images/${src}`);
 
-    // Hover animation
     item.addEventListener('mouseenter', () => {
       if (interval) return;
       interval = setInterval(() => {
@@ -35,13 +30,79 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // ------------------------------
-  // GALLERY TEXT SPACING (SPACE-BLOCKS)
-  // ------------------------------
-  const galleryTexts = document.querySelectorAll('.gallery-text');
-  galleryTexts.forEach(container => {
-    container.querySelectorAll('p').forEach(p => {
-      p.innerHTML = p.textContent.replace(/ /g, '<span class="space-block"></span>');
+  // ================================
+  // SPACE-BLOCK REPLACEMENT (UNCHANGED)
+  // ================================
+  document.querySelectorAll('.gallery-text p').forEach(p => {
+    p.innerHTML = p.innerHTML.replace(/ /g, '<span class="space-block"></span>');
+  });
+
+  // ================================
+  // MAGNETIC LETTER REPULSION
+  // + per-letter mass
+  // + staggered return
+  // ================================
+  const spaceText = document.querySelector('.space-text');
+  if (!spaceText) return;
+
+  // Wrap each visible character in a span
+  const walker = document.createTreeWalker(spaceText, NodeFilter.SHOW_TEXT);
+  let node;
+  const textNodes = [];
+
+  while ((node = walker.nextNode())) {
+    textNodes.push(node);
+  }
+
+  textNodes.forEach(textNode => {
+    const frag = document.createDocumentFragment();
+
+    [...textNode.textContent].forEach(char => {
+      if (char === ' ') {
+        frag.appendChild(document.createTextNode(' '));
+      } else {
+        const span = document.createElement('span');
+        span.className = 'letter';
+        span.textContent = char;
+
+        // 🔹 OPTION 1: per-letter "mass"
+        span.dataset.mass = (0.3 + Math.random()*3).toFixed(2);
+
+        frag.appendChild(span);
+      }
+    });
+
+    textNode.parentNode.replaceChild(frag, textNode);
+  });
+
+  spaceText.addEventListener('mousemove', e => {
+    spaceText.querySelectorAll('.letter').forEach(letter => {
+      const rect = letter.getBoundingClientRect();
+      const dx = e.clientX - (rect.left + rect.width / 2);
+      const dy = e.clientY - (rect.top + rect.height / 2);
+      const distance = Math.sqrt(dx * dx + dy * dy);
+
+      const force = Math.max(0, 1500 - distance) / 1500;
+      const mass = parseFloat(letter.dataset.mass);
+
+      letter.style.transition = 'transform 0.15s ease-out';
+
+      letter.style.transform = `
+        translate(
+          ${dx * force * -0.35 / mass}px,
+          ${dy * force * -0.35 / mass}px
+        )
+      `;
+    });
+  });
+
+  // 🔹 OPTION 3: staggered, individual return
+  spaceText.addEventListener('mouseleave', () => {
+    spaceText.querySelectorAll('.letter').forEach(letter => {
+      const delay = Math.random() * 200;
+
+      letter.style.transition = `transform 0.6s ease-out ${delay}ms`;
+      letter.style.transform = 'translate(0, 0)';
     });
   });
 

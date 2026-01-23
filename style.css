@@ -307,21 +307,29 @@
     z-index: 3;
   }
   .gallery-text {
-    grid-column: 1 / -1; /* span all columns */
-    text-align: right;   /* center the text */
-    margin: 40px 0;       /* space above/below */
+    grid-column: 1 / -1;
+    text-align: right;
+    margin: 40px 0;
     margin-right: 40px;
-    font-size: 30px;      /* adjust font size as needed */
+    font-size: 30px;
     line-height: 1.5;
-    color: orangered;          /* or whatever fits your palette */
+    color: orangered;
   }
+  /* existing */
   .space-block {
     display: inline-block;
-    width: 0.5em;        /* adjust width for spacing */
-    height: 0.2em;       /* adjust height for thickness */
-    background-color: #000000; /* choose any color */
-    vertical-align: middle;    /* align with text */
-    margin: 0 0.05em;    /* optional extra spacing */
+    width: 0.5em;
+    height: 0.2em;
+    background-color: #000000;
+    vertical-align: middle;
+    margin: 0 0.05em;
+  }
+  
+  /* NEW: magnetic letters */
+  .space-text span.letter {
+    display: inline-block;
+    transition: transform 0.15s ease-out;
+    will-change: transform;
   }
   
   
