@@ -10,6 +10,35 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <div id="mobile-warning" style="display:none;">
+    <div style="
+      position: fixed;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      background: rgba(255,255,255,0.95);
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      flex-direction: column;
+      z-index: 9999;
+      padding: 20px;
+      font-family: sans-serif;
+    ">
+      <h1 style="margin-bottom: 20px;">This website is best experienced on a desktop computer.</h1>
+      <button id="continue-mobile" style="
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        border: none;
+        background: black;
+        color: white;
+        border-radius: 4px;
+      ">Continue on Mobile</button>
+    </div>
+  </div>
   <div class="layout">
     <aside class="sidebar">
       <a href="/">
@@ -67,13 +96,13 @@
         </div>
       </div>
       <a class="item animated" 
-      href="projects/thebigflatnow.html"
-      data-images="project-five/final1.jpg,project-five/final2.jpg,project-five/final3.jpg,project-five/final4.jpg,project-five/final5.jpg,project-five/final6.jpg,project-five/final7.jpg,project-five/final8.jpg">
+      href="projects/horse.html"
+      data-images="project-11/horseshow1.jpg,project-11/horseshow2.jpg">
       <span class="exhibit-label">3e</span>  
-      <img src="images/project-five/web1.jpg" alt="Another preview">
+      <img src="images/project-11/horseshow1.jpg" alt="Another preview">
       <span class="caption">
         <span class="caption-text">
-          The.Big.Flat.Now/Web/2025
+          Lead.A.Horse.To.Water/Publication/2026
         </span>
       </span>
       </a>
@@ -89,9 +118,31 @@
         </span>
       </a>
       <a class="item animated" 
+      href="projects/thebigflatnow.html"
+      data-images="project-five/final1.jpg,project-five/final2.jpg,project-five/final3.jpg,project-five/final4.jpg,project-five/final5.jpg,project-five/final6.jpg,project-five/final7.jpg,project-five/final8.jpg">
+      <span class="exhibit-label">5e</span>  
+      <img src="images/project-five/web1.jpg" alt="Another preview">
+      <span class="caption">
+        <span class="caption-text">
+          The.Big.Flat.Now/Web/2025
+        </span>
+      </span>
+      </a>
+      <a class="item animated" 
+      href="projects/humanhood.html"
+      data-images="project-12/humanhood.jpg,project-12/humanhood2.jpg">
+      <span class="exhibit-label">6e</span>  
+      <img src="images/project-12/humanhood.jpg" alt="Another preview">
+      <span class="caption">
+        <span class="caption-text">
+          HumanHood/Poster/2026
+        </span>
+      </span>
+      </a>
+      <a class="item animated" 
       href="projects/iamai.html"
       data-images="project-four/mock.jpg,project-four/mock5.jpg,project-four/mock2.jpg,project-four/mock4.jpg,project-four/mock3.jpg,project-four/mock6.jpg,project-four/mock7.jpg">
-      <span class="exhibit-label">5e</span>  
+      <span class="exhibit-label">7e</span>  
         <img src="images/project-four/ai1.jpg" alt="Another preview">
         <span class="caption">
           <span class="caption-text">
@@ -102,7 +153,7 @@
       <a class="item animated" 
       href="projects/talkmore.html"
       data-images="project-three/talk1.jpg,project-three/talk2.jpg,project-three/talk3.jpg">
-      <span class="exhibit-label">6e</span>  
+      <span class="exhibit-label">8e</span>  
         <img src="images/project-three/talk1.jpg" alt="Another preview">
         <span class="caption">
           <span class="caption-text">
@@ -113,7 +164,7 @@
       <a class="item animated" 
       href="projects/littlehands.html"
       data-images="project-six/little3.jpg,project-six/little2.jpg,project-six/little1.jpg,project-six/little4.jpg,project-six/little5.jpg,project-six/little6.jpg,project-six/little7.jpg,project-six/little8.jpg,project-six/little9.jpg">
-      <span class="exhibit-label">7e</span>  
+      <span class="exhibit-label">9e</span>  
         <img src="images/project-six/little3.jpg" alt="Another preview">
         <span class="caption">
           <span class="caption-text">
@@ -124,7 +175,7 @@
       <a class="item animated" 
       href="projects/drk.html"
         data-images="project-eight/tell1.jpg,project-eight/tell2.jpg,project-eight/tell3.jpg,project-eight/tell4.jpg,project-eight/tell5.jpg,project-eight/tell6.jpg,project-eight/tell7.jpg,project-eight/tell8.jpg,project-eight/tell9.jpg,project-eight/tell10.jpg,project-eight/tell11.jpg,project-eight/tell12.jpg,project-eight/tell13.jpg">
-        <span class="exhibit-label">8e</span>  
+        <span class="exhibit-label">10e</span>  
         <img src="images/project-eight/tell8.jpg" alt="bro why u still shwoing up">
         <span class="caption">
           <span class="caption-text">
@@ -135,7 +186,7 @@
         <a class="item animated" 
         href="projects/iris.html"
         data-images="project-nine/logo1.jpg,project-nine/logo2.jpg,project-nine/logo3.jpg,project-nine/logo4.jpg,project-nine/logo5.jpg,project-nine/logo6.jpg">
-        <span class="exhibit-label">9e</span>  
+        <span class="exhibit-label">11e</span>  
         <img src="images/project-nine/logo1.jpg" alt="Another preview">
         <span class="caption">
           <span class="caption-text">
@@ -146,7 +197,7 @@
     <a class="item animated"
     href="projects/ishi.html"
     data-images="project-10/ishi1.jpg,project-10/ishi2.jpg,project-10/ishi3.jpg">
-    <span class="exhibit-label">10e</span>  
+    <span class="exhibit-label">12e</span>  
         <img src="images/project-10/ishi1.jpg" alt="Another preview">
         <span class="caption">
           <span class="caption-text">
