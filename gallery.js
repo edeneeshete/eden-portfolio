@@ -43,8 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // + staggered return
   // ================================
   const spaceText = document.querySelector('.space-text');
-  if (spaceText) {  // note: changed from if (!spaceText) return; so rest still runs
-    // Wrap each visible character in a span
+  if (spaceText) {
     const walker = document.createTreeWalker(spaceText, NodeFilter.SHOW_TEXT);
     let node;
     const textNodes = [];
@@ -63,10 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
           const span = document.createElement('span');
           span.className = 'letter';
           span.textContent = char;
-
-          // 🔹 per-letter "mass"
-          span.dataset.mass = (0.3 + Math.random()*3).toFixed(2);
-
+          span.dataset.mass = (0.3 + Math.random() * 3).toFixed(2);
           frag.appendChild(span);
         }
       });
@@ -85,13 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const mass = parseFloat(letter.dataset.mass);
 
         letter.style.transition = 'transform 0.15s ease-out';
-
-        letter.style.transform = `
-          translate(
-            ${dx * force * -0.35 / mass}px,
-            ${dy * force * -0.35 / mass}px
-          )
-        `;
+        letter.style.transform = `translate(${dx * force * -0.35 / mass}px, ${dy * force * -0.35 / mass}px)`;
       });
     });
 
@@ -129,25 +119,34 @@ document.addEventListener('DOMContentLoaded', () => {
       padding: 20px;
       font-family: sans-serif;
     `;
-    warning.innerHTML = `
-      <h1 style="margin-bottom:20px; color:black;">
-        For the best experience, view this website on a desktop.
-      </h1>
-      <button id="continue-mobile" style="
-        padding: 10px 20px;
-        font-size: 16px;
-        cursor: pointer;
-        border: none;
-        background: black;
-        color: white;
-        border-radius: 4px;
-      ">Continue on Mobile</button>
-    `;
-    document.body.appendChild(warning);
 
-    document.getElementById('continue-mobile').addEventListener('click', () => {
+    // Create message
+    const message = document.createElement('h1');
+    message.style.cssText = 'margin-bottom:20px; color:black;';
+    message.textContent = 'For the best experience, view this website on a desktop.';
+
+    // Create button
+    const button = document.createElement('button');
+    button.textContent = 'Continue on Mobile';
+    button.style.cssText = `
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+      background: black;
+      color: white;
+      border-radius: 4px;
+    `;
+
+    // Attach listener directly to button
+    button.addEventListener('click', () => {
       warning.style.display = 'none';
     });
+
+    // Append to overlay and body
+    warning.appendChild(message);
+    warning.appendChild(button);
+    document.body.appendChild(warning);
   }
 
 });
