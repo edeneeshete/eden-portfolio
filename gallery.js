@@ -129,7 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const button = document.createElement('button');
     button.textContent = 'Continue on Mobile';
     button.style.cssText = `
-      padding: 10px 20px;
+      padding: 15px 30px;
       font-size: 20px;
       cursor: pointer;
       border: none;
