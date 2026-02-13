@@ -247,10 +247,10 @@
   
   .about-image figcaption {
     font-size: 16px;
-    margin-top: 8px;
+    margin-top: -73px;
     color: orangered;    
     width: 200px;
-    margin-left: 660px;
+    margin-left: 868px;
     }
   
   /* Text */
@@ -268,7 +268,7 @@
   .about-text p {
     font-size: 16px;
     max-width: 520px;
-    margin-top: 350px;
+    margin-top: 330px;
     margin-left: 372px;
     }
   
