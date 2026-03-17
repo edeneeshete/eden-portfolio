@@ -198,7 +198,8 @@
     max-width: 60%;
   }
   .project-extra, .project-statement {
-  margin-left: -40px;
+  margin-left: -65px;
+  padding-left: 34px;
   }
   /* =========================
      RESPONSIVE
