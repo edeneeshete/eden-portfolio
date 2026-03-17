@@ -90,7 +90,7 @@
      MAIN CONTENT
   ========================= */
   .content {
-    padding: 24px;
+    padding: 24px 24px 24px 24px;   /* top right bottom left */
     overflow-y: auto;
   }
   
@@ -146,7 +146,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 48px;
-    max-width: 1100px;
+    max-width: 100%;
     margin: 0 auto;
   }
   
@@ -157,6 +157,7 @@
     align-items: center;
     gap: 24px;
     margin-top: 4px;
+    margin-left: 100px;
   }
   
   .project-images img {
@@ -166,49 +167,39 @@
   
   /* PROJECT TEXT */ 
   .project-info {
-    position: relative;
-    height: 100vh;              /* same height on every page */
-    padding-top: 60px;
+    padding-top: 0px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    min-height: 80vh;            /* gives the column enough height */
   }
-  
   .project-title {
-    position: absolute;
-    top: -32px;                  /* FIXED LINE */
-    right: -110px;              /* your opposing margin */
     font-size: 40px;
     color: orangered;
     line-height: 0.9;
-    text-align: center;
+    text-align: right;
+    margin-top: 0;        /* remove any top gap */
+    padding-top: 0;
   }
-  
   .project-meta {
-    position: absolute;
-    top: 100px;                 /* FIXED LINE */
-    right: -110px;
     font-weight: 300;
     font-size: 20px;
-    text-align: center;
+    text-align: right;
   }
   .project-extra {
-    position: absolute;
-    top: 300px;                 /* FIRST LINE ALWAYS SAME */
-    left: 0;
     color: orangered;
-    width: 60%;
     font-size: 20px;
+    padding-top: 22%;        /* moves content down — scales with screen height */
     font-weight: 400;
-    text-align: left;
-  }
+    }
   .project-statement {
-    position: absolute;
-    top: 360px;                 /* FIRST LINE ALWAYS SAME */
-    left: 0;
-    width: 60%;
     font-size: 16px;
     font-weight: 400;
-    text-align: left;
+    max-width: 60%;
   }
-  
+  .project-extra, .project-statement {
+  margin-left: -40px;
+  }
   /* =========================
      RESPONSIVE
   ========================= */
@@ -342,13 +333,14 @@ body:has(.lightbox.open) {
     display: block;
     transition: transform 0.2s ease;
 }
+
 .project-nav {
-  position: absolute;
-  bottom: 60px;               /* FIXED ACROSS ALL PROJECTS */
-  left: 50%;
-  transform: translateX(-50%);
+  position: fixed;
+  bottom: 40px;           /* distance from bottom of viewport */
+  right: 8.75%;              /* distance from right edge */
   display: flex;
   gap: 80px;
+  z-index: 1000;          /* keeps it above other content */
 }
 
 .back-link,
@@ -368,6 +360,7 @@ body:has(.lightbox.open) {
   /* SIDEBAR IMAGE */
 .sidebar-image {
     width: 100%;
+    margin-top: -16px;
     margin-bottom: 16px;
   }
   
